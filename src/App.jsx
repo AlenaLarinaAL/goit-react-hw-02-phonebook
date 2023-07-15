@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-
-import Container from './components/Container/Container';
+import Section from './components/Section/Section';
 import ContactsEditor from './components/ContactsEditor/ContactsEditor';
 import ContactsList from './components/ContactsList/ContactsList';
-
 import Filter from './components/Filter/Filter';
-
 import contacts from './data/contacts.json';
 
 import { nanoid } from 'nanoid';
@@ -62,16 +59,18 @@ class App extends Component {
     const filteredContacts = this.getFilteredContacts();
 
     return (
-      <Container title="PhoneBook">
-        <ContactsEditor onSubmit={this.createContact} />
-
-        <Filter value={filter} onChange={this.changeFilter} />
-
-        <ContactsList
-          contacts={filteredContacts}
-          handleDelete={this.handleDelete}
-        />
-      </Container>
+      <>
+        <Section title="PhoneBook">
+          <ContactsEditor onSubmit={this.createContact} />
+        </Section>
+        <Section title="Contacts">
+          <Filter value={filter} onChange={this.changeFilter} />
+          <ContactsList
+            contacts={filteredContacts}
+            handleDelete={this.handleDelete}
+          />
+        </Section>
+      </>
     );
   }
 }

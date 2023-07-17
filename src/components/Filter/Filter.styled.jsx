@@ -16,6 +16,7 @@ export const Input = styled.input`
   border-radius: 4px;
   transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: transparent;
+  color: ${theme.colors.accent};
   border-radius: 4px;
   :hover,
   :focus {

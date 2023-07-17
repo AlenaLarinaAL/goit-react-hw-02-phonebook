@@ -1,19 +1,21 @@
 import PropTypes from 'prop-types';
+import { List, Item, Span, Button } from './ContactsList.styled';
+import { MdDelete } from 'react-icons/md';
 
-const ContactsList = ({ contacts, handleDelete }) => (
-  <ul>
+export const ContactsList = ({ contacts, handleDelete }) => (
+  <List>
     {contacts.map(({ id, name, number }) => (
-      <li key={id}>
-        <span>
+      <Item key={id}>
+        <Span>
           {name}: {number}
-        </span>
-        <button onClick={() => handleDelete(id)}>Delete</button>
-      </li>
+        </Span>
+        <Button onClick={() => handleDelete(id)}>
+          <MdDelete size={15} />
+        </Button>
+      </Item>
     ))}
-  </ul>
+  </List>
 );
-
-export default ContactsList;
 
 ContactsList.propTypes = {
   contacts: PropTypes.arrayOf(

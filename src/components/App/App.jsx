@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Section, ContactsList, ContactsEditor, Filter } from 'components';
+import {
+  Section,
+  ContactsList,
+  ContactsEditor,
+  Filter,
+  Notification,
+} from 'components';
 
 import { nanoid } from 'nanoid';
 
@@ -51,7 +57,7 @@ class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     const filteredContacts = this.getFilteredContacts();
 
     return (
@@ -61,10 +67,14 @@ class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter value={filter} onChange={this.changeFilter} />
-          <ContactsList
-            contacts={filteredContacts}
-            handleDelete={this.handleDelete}
-          />
+          {contacts.length > 0 ? (
+            <ContactsList
+              contacts={filteredContacts}
+              handleDelete={this.handleDelete}
+            />
+          ) : (
+            <Notification message="There is no contacts"></Notification>
+          )}
         </Section>
       </>
     );
